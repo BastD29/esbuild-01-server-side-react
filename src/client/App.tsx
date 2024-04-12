@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { fetchData } from "./services/fetchService";
 
 const App = () => {
   const [data, setData] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/hello")
-      .then((res) => res.json())
+    fetchData("/api/hello")
       .then((data) => setData(data.message))
-      .catch((e) => console.log("[fetch error]", e));
+      .catch(() => console.log("setError(true)"));
   }, []);
 
   return (

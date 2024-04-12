@@ -23514,10 +23514,28 @@
 
   // src/client/App.tsx
   var import_react = __toESM(require_react());
+
+  // src/client/services/fetchService.ts
+  var BASE_URL = true ? "http://localhost:3000" : "";
+  var fetchData = async (endpoint) => {
+    try {
+      const response = await fetch(`${BASE_URL}${endpoint}`);
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("fetch error:", error);
+      throw error;
+    }
+  };
+
+  // src/client/App.tsx
   var App = () => {
     const [data, setData] = (0, import_react.useState)("");
     (0, import_react.useEffect)(() => {
-      fetch("http://localhost:3000/api/hello").then((res) => res.json()).then((data2) => setData(data2.message)).catch((e) => console.log("[fetch error]", e));
+      fetchData("/api/hello").then((data2) => setData(data2.message)).catch(() => console.log("setError(true)"));
     }, []);
     return /* @__PURE__ */ import_react.default.createElement("div", { className: "mt-5" }, /* @__PURE__ */ import_react.default.createElement("h1", { className: "text-center text-secondary" }, "Hello ", data));
   };

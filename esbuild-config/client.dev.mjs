@@ -23,7 +23,7 @@ try {
     },
   });
 
-  await ctx.watch(); // watching files for changes + automatically recompile, rebundle, reoutput a new static/bundle.js
+  await ctx.watch(); // watching files for changes + automatically recompile, rebundle, reoutput a new static/bundle.js (only needed for development)
 
   console.log("Watching client...");
 

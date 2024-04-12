@@ -18,4 +18,12 @@ app.get("/api/hello", (req, res) => {
   res.json({ message: "World" });
 });
 
-app.listen(3000);
+// 404 fallback for client side routing
+if (isProduction) {
+  app.get("*", (req, res) => {
+    res.sendFile("index.html", { root: "public" });
+  });
+}
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

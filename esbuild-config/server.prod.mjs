@@ -1,25 +1,22 @@
 import * as esbuild from "esbuild";
 
-let ctx;
-
 try {
-  ctx = await esbuild.context({
+  await esbuild.build({
     entryPoints: ["src/server/server.ts"],
     bundle: true,
-    sourcemap: true,
-    minify: false,
+    sourcemap: false,
+    minify: true,
     platform: "node",
     target: ["node18.6"],
     packages: "external",
     define: {
-      "process.env.NODE_ENV": "'development'",
+      "process.env.NODE_ENV": "'production'",
     },
     outfile: "dist/server.js",
   });
 
-  await ctx.watch();
-  console.log("Watching server...");
+  console.log("Server bundled successfully for production!");
 } catch (error) {
-  console.error("An error occurred:", error);
+  console.error("An error occurred during bundling:", error);
   process.exit(1);
 }
