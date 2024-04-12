@@ -1,5 +1,5 @@
 import * as esbuild from "esbuild";
-// import * as sass from "sass";
+import * as sass from "sass";
 import { sassPlugin } from "esbuild-sass-plugin";
 
 let ctx;
@@ -14,8 +14,13 @@ try {
     plugins: [
       sassPlugin({
         type: "style",
+        logger: sass.Logger.silent,
+        quietDeps: true,
       }),
     ],
+    define: {
+      "process.env.NODE_ENV": "'development'",
+    },
   });
 
   await ctx.watch(); // watching files for changes + automatically recompile, rebundle, reoutput a new static/bundle.js

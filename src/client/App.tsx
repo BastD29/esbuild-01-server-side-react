@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const App = () => {
-  const [data, setData] = useState("World");
+  const [data, setData] = useState("");
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/hello")
+      .then((res) => res.json())
+      .then((data) => setData(data.message))
+      .catch((e) => console.log("[fetch error]", e));
+  }, []);
 
   return (
     <div className="mt-5">

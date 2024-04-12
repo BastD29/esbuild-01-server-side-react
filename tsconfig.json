@@ -11,5 +11,5 @@
     "moduleResolution": "node",
     "resolveJsonModule": true
   },
-  "exclude": ["node_modules", "esbuild-config", "public/static"]
+  "exclude": ["node_modules", "esbuild-config", "public/static", "dist"]
 }
