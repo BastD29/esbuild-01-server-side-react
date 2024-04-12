@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
-import "./styles/app.scss";
+// import "./styles/app.scss";
+import "./styles/app.css";
 
 if (process.env.NODE_ENV === "development") {
   new EventSource("/esbuild").addEventListener("change", () =>

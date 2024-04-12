@@ -11,5 +11,12 @@
     "moduleResolution": "node",
     "resolveJsonModule": true
   },
-  "exclude": ["node_modules", "esbuild-config", "public/static", "dist"]
+  "exclude": [
+    "node_modules",
+    "esbuild-config",
+    "public/static",
+    "dist",
+    "postcss.config.js",
+    "tailwind.config.js"
+  ]
 }
