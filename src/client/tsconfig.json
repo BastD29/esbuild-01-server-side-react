@@ -6,5 +6,8 @@
     "rootDir": "."
   },
   //   "include": ["./**/*"]
-  "include": ["./*.ts", "./*.tsx"]
+  // "include": ["./*.ts", "./*.tsx"]
+  // "include": ["./**/*{ts,tsx}"] // * error with this one
+  // "include": ["./**/.*{ts,tsx}"] // * error with this one
+  "include": ["./**/*.ts", "./**/*.tsx"]
 }
